@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+const db  = require('./config/mongoose');
 const port = 300;
 const app = express();
 
@@ -14,6 +16,5 @@ app.listen(port,(err)=>{
     if(err){
         console.log(`Something Went Wrong on ${port}`,err);
     }
-    console.log(`app is running on: ${port}`)
-
+    console.log(`app is running on: ${port}`);
 });
