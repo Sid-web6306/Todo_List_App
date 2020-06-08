@@ -14,22 +14,16 @@ app.use(express.static('assets'));
 
 
 app.get('/',(req,res)=>{
-    
-    return res.render('home',{
-        title: 'Todo List'
-    })
-});
-app.get('/',(req,res)=>{
-    TodoList.find({},(err,TodoList)=>{
+    TodoList.find({},(err,todolists)=>{
         if(err){
-            console.log('error in fetching the data from database')
+            console.log('error in fetching a data from database', err);return;
         }
-    })
-})
-
-
-
-
+            return res.render('home',{
+            title: 'Todo List',
+            todolists: todolists
+        });
+    }
+)});
 
 app.post('/create-TodoList',(req,res)=>{
     TodoList.create({

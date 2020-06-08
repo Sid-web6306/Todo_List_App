@@ -19,8 +19,43 @@
         </select>
         <input type="date" name="duedate" required/>
         <input type="Submit" name="addtask" value="+ Add Task"/>
-        <input type="Submit" name="deleteTask" value="- Delete Task"/>
     </form>  
+
+</form>
+</section>
+    <div>          
+            <h1 align="center">TASKS LIST</h1>
+
+            <form action="/delete-task" method="GET">
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th>Select</th>
+                          <th>Task</th>
+                          <th>Category</th>
+                        <th>due date</th>
+                        </tr>
+                      </thead>
+                    <% for(let i of todolists) { %>
+                        
+<tr>
+                           <td> <input type="checkbox" name="<%= i._id %>" ></td>
+                           <td> <p id="task-description"><%= i.Description %></td>
+                            <td><p id="task-category"></p>: <%= i.Category %></td>
+                            <td><p id="due-date">: <%= i.DueDate %></p></td>
+</tr>
+                
+                    <% } %>
+                        
+            
+
+                       
+</table>
+<div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK">
+
+    
+        </div>
+    
 </body>
 
 </html>
