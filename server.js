@@ -39,7 +39,19 @@ app.post('/create-TodoList',(req,res)=>{
     });
 });
 
+app.get('/delete-todolist-task',(req,res)=>{
+    var id = req.query;
+    var count = Object.keys(id).length;
 
+    for(let i=0;i<count;i++){
+        TodoList.findByIdAndDelete(Object.keys(id)[i],(err)=>{
+            if(err){
+                console.log('error in deleting a Todolist task');
+            }
+        });
+    }
+    return res.redirect('back');
+});
 
 
 
