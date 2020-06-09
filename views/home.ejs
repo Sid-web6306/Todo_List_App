@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
     <title><%=title%> | App</title>
 </head>
 <body>
-    <h1>My TodoList</h1>
+    <section>
+        <div class="form-container">
+            <h1>New Todo</h1>
+            <form action="/create-TodoList-task" method="POST">
+                <div class="inputBox">
+                    <input id="description" class="task" type="text" name="description" required>
+                    <label>Description</label>
+                </div>
+                <div class="inputBox">
+                    <label id="category">Category</label>
+                    <select id="Category" class="task" name="category">
+                        <option value="Select">Choose A Category</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Coding">Coding</option>
+                    </select>
+                    
+                    
+                </div>
+                <div class="inputBox">
+                    <label id="due-date" >Due Date</label>
+                    <input id='datePicker' class="task" type="date"  name="duedate" required/><br/>
+                    
+                </div>
+                <input id="addtask" class="task" type="Submit" name="addtask" value="+ Add Task"/>
+            </form> 
+        </div>
+    </section>
 
-    <form action="/create-TodoList" method="POST">
-        <input type="textarea" name="description" placeholder="what do you need to do?" required>
-        <select id="Category" name="category">
-            <option value="Select">Choose a Category</option>
-            <option value="Personal">Personal</option>
-            <option value="Work">Work</option>
-            <option value="Cleaning">Cleaning</option>
-            <option value="Coding">Coding</option>
-        </select>
-        <input type="date" name="duedate" required/>
-        <input type="Submit" name="addtask" value="+ Add Task"/>
-    </form>  
-
-</form>
+     
+ <form action="/delete-todolist-task" method="GET">
+    <div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK">
+    </div>
 </section>
     <div>          
             <h1 align="center">TASKS LIST</h1>
 
-            <form action="/delete-todolist-task" method="GET">
-                <table class="table">
+           
+                <table class="table" border="1">
                     <thead>
                         <tr>
                           <th>Select</th>
@@ -40,9 +60,9 @@
                         
 <tr>
                            <td> <input type="checkbox" name="<%= i._id %>" ></td>
-                           <td> <p id="task-description"><%= i.Description %></td>
-                            <td><p id="task-category"></p>: <%= i.Category %></td>
-                            <td><p id="due-date">: <%= i.DueDate %></p></td>
+                           <td> <p id="task-description"><%= i.Description %></p></td>
+                            <td><p id="task-category"><%= i.Category %></p> </td>
+                            <td><p id="due-date"> <%= i.DueDate %></p></td>
 </tr>
                 
                     <% } %>
@@ -51,11 +71,9 @@
 
                        
 </table>
-<div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK">
 
     
-        </div>
-    
 </body>
+<script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
 
 </html>
