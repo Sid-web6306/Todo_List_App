@@ -42,7 +42,6 @@ app.post('/create-TodoList-task',(req,res)=>{
 app.get('/delete-todolist-task',(req,res)=>{
     var id = req.query;
     var count = Object.keys(id).length;
-
     for(let i=0;i<count;i++){
         TodoList.findByIdAndDelete(Object.keys(id)[i],(err)=>{
             if(err){

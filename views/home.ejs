@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
     <title><%=title%> | App</title>
 </head>
 <body>
     <section>
         <div class="form-container">
-            <h1>New Todo</h1>
+            <h1><i class="fas fa-edit"></i>&nbsp&nbspNew Todo</h1>
+            
             <form action="/create-TodoList-task" method="POST">
                 <div class="inputBox">
                     <input id="description" class="task" type="text" name="description" required>
@@ -38,42 +44,95 @@
         </div>
     </section>
 
-     
- <form action="/delete-todolist-task" method="GET">
-    <div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK">
-    </div>
-</section>
-    <div>          
-            <h1 align="center">TASKS LIST</h1>
 
-           
-                <table class="table" border="1">
-                    <thead>
-                        <tr>
-                          <th>Select</th>
-                          <th>Task</th>
-                          <th>Category</th>
-                        <th>due date</th>
-                        </tr>
-                      </thead>
-                    <% for(let i of todolists) { %>
-                        
-<tr>
-                           <td> <input type="checkbox" name="<%= i._id %>" ></td>
-                           <td> <p id="task-description"><%= i.Description %></p></td>
-                            <td><p id="task-category"><%= i.Category %></p> </td>
-                            <td><p id="due-date"> <%= i.DueDate %></p></td>
-</tr>
-                
-                    <% } %>
-                        
-            
+    </section>
+        <div id="output" class="form-container">          
+            <h1 align="center"><i class="fas fa-clipboard-list"></i>&nbsp&nbspTodo List</h1>
+            <table id="myTable" class="table" border="1">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Select</th>
+                        <th onclick="sortTable(1)">Task</th>
+                        <th onclick="sortTable(2)">Category</th>
+                        <th onclick="sortTable(3)">Due Date</th>
+                    </tr>
+                </thead>
+                <% for(let i of todolists) { %>
+                            
+                <tr>
+                    <td><input type="checkbox" class="select" name="<%= i._id %>" ></td>
+                    <td><p id="task-description"><%= i.Description %></p></td>
+                    <td><p id="task-category"><%= i.Category %></p> </td>
+                    <td><p id="due-date"> <%= i.DueDate %></p></td>
+                </tr>
+                    
+                <% } %>          
+            </table>
+            <form action="/delete-todolist-task" method="GET">
+                <input type="submit" class="btn btn-danger" value="🗑 DELETE TASK">
+            </form>
+        </div>
+    </section>
 
-                       
-</table>
-
-    
 </body>
-<script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
+
+<script>
+
+    document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc"; 
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /*check if the two rows should switch place,
+            based on the direction, asc or desc:*/
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch= true;
+                break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                //if so, mark as a switch and break the loop:
+                shouldSwitch = true;
+                break;
+                }
+            }
+            }
+            if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            //Each time a switch is done, increase this count by 1:
+            switchcount ++;      
+            } else {
+            /*If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again.*/
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+            }
+        }
+    }
+</script>
 
 </html>
