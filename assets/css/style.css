@@ -102,7 +102,7 @@ form{
     border: 1px solid #8a7e7e;
 }
 #output{
-    transform: translate(-50%,22%);
+    transform: translate(-50%,40%);
     width:90vw;
     background-color: rgba(0,0,0,0.9);
     margin-bottom: 30px;
@@ -156,5 +156,6 @@ table tr{
         position: relative;
         left:-10%;
     }
+
      
 }

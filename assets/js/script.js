@@ -1,4 +1,4 @@
-document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);
+
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");

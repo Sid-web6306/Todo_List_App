@@ -47,8 +47,10 @@
 
 
     </section>
-        <div id="output" class="form-container">          
-            <h1 align="center"><i class="fas fa-clipboard-list"></i>&nbsp&nbspTodo List</h1>
+        <div id="output" class="form-container">         
+
+            <h1><i class="fas fa-clipboard-list"></i>&nbsp&nbspTodo List</h1>
+            <form action="/delete-todolist-task" method="GET">
             <table id="myTable" class="table" border="1">
                 <thead>
                     <tr>
@@ -69,13 +71,14 @@
                     
                 <% } %>          
             </table>
-            <form action="/delete-todolist-task" method="GET">
+            
                 <input type="submit" class="btn btn-danger" value="🗑 DELETE TASK">
             </form>
         </div>
     </section>
 
 </body>
+<script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
 
 
 
