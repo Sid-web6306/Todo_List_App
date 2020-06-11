@@ -4,6 +4,7 @@ const db  = require('./config/mongoose');
 const TodoList = require('./models/todo_List');
 const port = 300;
 const app = express();
+
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname, 'views'));
 app.use(express.urlencoded());// Using MiddleWare

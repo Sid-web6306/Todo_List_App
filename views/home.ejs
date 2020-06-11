@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <script type="text/javascript" src="/js/script.js"></script>
+
     <title><%=title%> | App</title>
 </head>
 <body>
@@ -38,7 +39,6 @@
                 <div class="inputBox">
                     <label id="due-date" >Due Date</label>
                     <input id='datePicker' class="task" type="date"  name="duedate" required/><br/>
-                    
                 </div>
                 <input id="addtask" class="task" type="Submit" name="addtask" value="+ Add Task"/>
             </form> 
@@ -76,9 +76,9 @@
             </form>
         </div>
     </section>
-
+    <script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
 </body>
-<script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
+
 
 
 
