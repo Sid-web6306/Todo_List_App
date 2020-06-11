@@ -13,7 +13,7 @@ app.use(express.static('assets'));
 
 
 
-
+//fetching data from database
 app.get('/',(req,res)=>{
     TodoList.find({},(err,todolists)=>{
         if(err){
@@ -26,6 +26,8 @@ app.get('/',(req,res)=>{
     }
 )});
 
+
+//Storing data from database
 app.post('/create-TodoList-task',(req,res)=>{
     TodoList.create({
         Description:req.body.description,
@@ -40,14 +42,12 @@ app.post('/create-TodoList-task',(req,res)=>{
     });
 });
 
+//deleting data from database
 app.get('/delete-todolist-task',(req,res)=>{
     var id = req.query;
     console.log(id);
-    // checking the number of tasks selected to delete
     var count = Object.keys(id).length;
     for(let i=0; i < count ; i++){
-        
-        // finding and deleting tasks from the DB one by one using id
         TodoList.findByIdAndDelete(Object.keys(id)[i], function(err){
         if(err){
             console.log('error in deleting task');

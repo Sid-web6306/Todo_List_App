@@ -1,3 +1,5 @@
+/* making website interactive with adding some style */
+
 body{
     margin: 0;
     padding: 0;
@@ -5,13 +7,7 @@ body{
     background: url('../images/bg.jfif') no-repeat center center fixed;
     background-size: cover;
 }
-.letter {
-    display: inline-block;
-    opacity: 0;
-}
-h1 div{
-    display: inline-block;
-}
+/* designing form structure */
 .form-container{
     position: absolute;
     top: 50%;
@@ -25,6 +21,7 @@ h1 div{
     border-radius: 10px;
 }
 
+/* form headline */
 .form-container h1{
     margin: 0 0 30px;
     padding: 0;
@@ -32,6 +29,8 @@ h1 div{
     text-align: center;
 
 }
+
+/* form inputs */
 .inputBox
 {
     position: relative;
@@ -100,6 +99,9 @@ form{
     color:#8a7e7e;
     border: 1px solid #8a7e7e;
 }
+
+
+/* Designing a display structure */
 #output{
     transform: translate(-50%,40%);
     width:90vw;
@@ -137,9 +139,9 @@ table tr{
     margin: 0 auto;
     margin-top: 20px;   
 }
-/* @media only screen and (max-width: 450px){
+/* Media Queries for responsiveness */
 
-} */
+
 @media only screen and (max-width: 450px) {
     .form-container{
         width: 90vw;

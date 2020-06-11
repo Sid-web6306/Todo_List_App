@@ -15,6 +15,7 @@
     <title><%=title%> | App</title>
 </head>
 <body>
+    <!-- Creating form for storing database -->
     <section>
         <div class="form-container">
             <h1><i class="fas fa-edit"></i>&nbsp&nbspNew Todo</h1>
@@ -45,7 +46,7 @@
         </div>
     </section>
 
-
+    <!-- displaying data from database and also mark as done i.e delete when done -->
     </section>
         <div id="output" class="form-container">         
 
@@ -76,7 +77,10 @@
             </form>
         </div>
     </section>
-    <script>document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);</script>
+    <script>
+        // To display today date
+        document.getElementById('datePicker').value = new Date().toISOString().slice(0, 10);
+    </script>
 </body>
 
 
