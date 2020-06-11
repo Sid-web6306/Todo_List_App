@@ -1,4 +1,4 @@
-
+//Javascript file for sorting data column wise
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");
