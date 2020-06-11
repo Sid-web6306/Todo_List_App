@@ -1,3 +1,6 @@
+//Before Running Read the instructions in README.md file
+//Thankyou..😁😁
+
 const express = require('express');
 const path = require('path');
 const db  = require('./config/mongoose');
